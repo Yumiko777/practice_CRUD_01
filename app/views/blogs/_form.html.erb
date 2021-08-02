@@ -1,0 +1,27 @@
+<%= form_with(model: @blog, local: true) do |form| %>
+  <% if @blog.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@blog.errors.count, "error") %> はこの投稿の保存を禁止しています:</h2>
+
+      <ul>
+      <% @blog.errors.full_messages.each do |msg| %>
+        <li><%= msg %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="blot_title">
+    <%= form.label :title %>
+    <%= form.text_field :title %>
+  </div>
+
+  <div class="blot_content">
+    <%= form.label :content %>
+    <%= form.text_field :content %>
+  </div>
+
+  <%= form.submit %>
+<% end %>
+
+<%= link_to "一覧に戻る",blogs_path %>

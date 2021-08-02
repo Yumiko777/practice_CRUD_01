@@ -1,2 +1,18 @@
 <h1>Blogs#index</h1>
-<p>Find me in app/views/blogs/index.html.erb</p>
+<p><%= notice %></p>
+<table>
+  <tr>
+    <th>タイトル</th>
+    <th>内容</th>
+  </tr>
+<% @blogs.each do |blog| %>
+  <tr>
+    <td><%= blog.title %></td>
+    <td><%= blog.content %></td>
+    <td><%= link_to "詳細確認", blog_path(blog.id) %></td>
+    <td><%= link_to "編集確認", edit_blog_path(blog.id) %></td>
+    <td><%= link_to "削除確認", blog_path(blog.id), method: :delete, data: { confirm: "本当によろしいでしょうか？"} %></td>
+  </tr>
+<% end %>
+</table>
+<%= link_to "新しく投稿する", new_blog_path %>
